@@ -1,0 +1,183 @@
+/* ================= BettaFish 交付物 统一设计系统 =================
+   简约现代风：白底 / 深墨蓝 / 单强调色 / 大留白 / 细边框
+   */
+:root {
+  --ink: #0F172A;          /* 主文字：深墨蓝 */
+  --ink-2: #475569;        /* 次文字 */
+  --ink-3: #94A3B8;        /* 辅助文字 */
+  --line: #E2E8F0;         /* 分割线 */
+  --bg-soft: #F8FAFC;      /* 浅底 */
+  --bg-soft-2: #F1F5F9;
+  --accent: #2563EB;       /* 强调色 */
+  --accent-soft: #EFF6FF;
+  --ok: #10B981;
+  --warn: #F59E0B;
+  --danger: #EF4444;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px -12px rgba(15, 23, 42, .12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 画布布局 ---------- */
+.screen {
+  width: 1440px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* 顶部导航 */
+.nav {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 48px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: .2px; }
+.brand .dot {
+  width: 22px; height: 22px; border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent), #7C3AED);
+}
+.nav-links { display: flex; gap: 4px; margin-left: 8px; }
+.nav-links a {
+  font-size: 14px; color: var(--ink-2); text-decoration: none;
+  padding: 8px 14px; border-radius: 8px;
+}
+.nav-links a.active { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.nav-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-soft-2); border: 1px solid var(--line); }
+
+/* 页面主体 */
+.body { padding: 40px 48px; }
+.h1 { font-size: 30px; font-weight: 700; letter-spacing: -.5px; }
+.h2 { font-size: 18px; font-weight: 700; }
+.sub { color: var(--ink-2); font-size: 14px; line-height: 1.7; margin-top: 8px; }
+
+/* ---------- 组件 ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 20px; border-radius: 10px;
+  font-size: 14px; font-weight: 600; border: 1px solid var(--line);
+  background: #fff; color: var(--ink); cursor: pointer;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.ghost { background: transparent; }
+.btn.sm { height: 32px; padding: 0 14px; font-size: 13px; border-radius: 8px; }
+.btn.danger { color: var(--danger); border-color: #FECACA; background: #FEF2F2; }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+}
+.badge .d { width: 6px; height: 6px; border-radius: 50%; }
+.badge.run { background: #ECFDF5; color: #047857; }
+.badge.run .d { background: var(--ok); }
+.badge.stop { background: var(--bg-soft-2); color: var(--ink-3); }
+.badge.stop .d { background: var(--ink-3); }
+.badge.warn { background: #FFFBEB; color: #B45309; }
+.badge.warn .d { background: var(--warn); }
+
+.tag {
+  display: inline-block; padding: 4px 10px; border-radius: 7px;
+  background: var(--bg-soft-2); color: var(--ink-2);
+  font-size: 12px; font-weight: 600;
+}
+
+.input {
+  width: 100%; height: 52px; border-radius: 12px;
+  border: 1px solid var(--line); background: #fff;
+  padding: 0 18px; font-size: 15px; color: var(--ink);
+  font-family: inherit;
+}
+.input::placeholder { color: var(--ink-3); }
+
+/* 大写字母标签 */
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 1.4px;
+  color: var(--ink-3); text-transform: uppercase;
+}
+
+/* 细分割 */
+.hr { height: 1px; background: var(--line); }
+
+/* 日志窗 */
+.logbox {
+  background: #0B1220; border-radius: 10px; padding: 14px 16px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 12px; line-height: 1.9; color: #94A3B8;
+  overflow: hidden;
+}
+.logbox .t { color: #64748B; }
+.logbox .ok { color: #34D399; }
+.logbox .hl { color: #60A5FA; }
+.logbox .wn { color: #FBBF24; }
+
+/* 进度条 */
+.progress { height: 6px; background: var(--bg-soft-2); border-radius: 999px; overflow: hidden; }
+.progress > i { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+
+/* ============ 图表 / 结构图专用 ============ */
+.canvas {
+  width: 1600px; height: 1000px; background: #fff; position: relative;
+  font-family: "Microsoft YaHei", system-ui, sans-serif;
+}
+.canvas-title { padding: 46px 64px 0; }
+.canvas-title h1 { font-size: 34px; font-weight: 700; letter-spacing: -.6px; }
+.canvas-title p { color: var(--ink-2); font-size: 15px; margin-top: 10px; }
+.canvas-foot {
+  position: absolute; left: 64px; bottom: 34px;
+  font-size: 12px; color: var(--ink-3); letter-spacing: .5px;
+}
+
+/* 结构图盒子 */
+.node {
+  border: 1.5px solid var(--line); border-radius: 12px; background: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 12px 14px; position: absolute;
+}
+.node .t { font-size: 15px; font-weight: 700; }
+.node .d { font-size: 11.5px; color: var(--ink-2); margin-top: 4px; line-height: 1.5; }
+.node.root { background: var(--ink); border-color: var(--ink); }
+.node.root .t { color: #fff; font-size: 20px; }
+.node.root .d { color: #94A3B8; }
+.node.lv1 { background: var(--accent-soft); border-color: #BFDBFE; }
+.node.lv1 .t { color: #1D4ED8; }
+.node.lv2 { background: var(--bg-soft); }
+.node.leaf { background: #fff; border-style: dashed; }
+.node.leaf .t { font-size: 13.5px; font-weight: 600; }
+
+/* 流程步骤 */
+.step {
+  position: absolute; border-radius: 12px; padding: 16px 18px;
+  border: 1.5px solid var(--line); background: #fff;
+}
+.step .n {
+  width: 22px; height: 22px; border-radius: 7px; background: var(--ink); color: #fff;
+  font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 9px;
+}
+.step .t { font-size: 15px; font-weight: 700; }
+.step .d { font-size: 12px; color: var(--ink-2); margin-top: 5px; line-height: 1.6; }
+.step.accent { border-color: var(--accent); background: var(--accent-soft); }
+.step.accent .n { background: var(--accent); }

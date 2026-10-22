@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>角色功能图</title>
+<link rel="stylesheet" href="../prototype/assets/style.css">
+<style>
+  .role { position: absolute; width: 440px; height: 96px; border-radius: 14px; display: flex; align-items: center;
+          padding: 0 24px; gap: 16px; }
+  .role .ico { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+               font-size: 17px; font-weight: 700; flex: none; }
+  .role .t { font-size: 17px; font-weight: 700; }
+  .role .d { font-size: 11.5px; margin-top: 4px; }
+  .role.primary { background: var(--accent-soft); border: 1.5px solid #BFDBFE; }
+  .role.primary .ico { background: var(--accent); color: #fff; }
+  .role.primary .t { color: #1D4ED8; } .role.primary .d { color: #3B82F6; }
+  .role.dark { background: var(--ink); border: 1.5px solid var(--ink); }
+  .role.dark .ico { background: #1E293B; color: #7DD3FC; }
+  .role.dark .t { color: #fff; } .role.dark .d { color: #94A3B8; }
+  .role.gray { background: var(--bg-soft-2); border: 1.5px solid var(--line); }
+  .role.gray .ico { background: #fff; color: var(--ink-2); border: 1px solid var(--line); }
+  .role.gray .t { color: var(--ink); } .role.gray .d { color: var(--ink-3); }
+
+  .fn { position: absolute; width: 440px; height: 60px; border-radius: 10px; border: 1px solid var(--line);
+        background: #fff; display: flex; align-items: center; padding: 0 20px; gap: 12px; font-size: 13.5px; }
+  .fn .k { width: 20px; height: 20px; border-radius: 6px; background: var(--bg-soft-2); color: var(--ink-3);
+           font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none; }
+  .fn .x { color: var(--ink-3); font-size: 11.5px; margin-left: auto; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="canvas-title">
+    <h1>角色与功能权限图</h1>
+    <p>三类使用角色及其可操作的功能点（按最小权限原则划分）</p>
+  </div>
+
+  <!-- 统一入口 -->
+  <div class="node root" style="left:590px;top:158px;width:420px;height:80px">
+    <div class="t" style="font-size:17px">统一身份入口</div>
+    <div class="d">登录校验 · 角色识别 · 操作留痕</div>
+  </div>
+
+  <!-- 三个角色 -->
+  <div class="role primary" style="left:80px;top:300px">
+    <div class="ico">用</div>
+    <div><div class="t">分析用户</div><div class="d">系统默认角色 · 舆情分析主使用者</div></div>
+  </div>
+  <div class="role dark" style="left:580px;top:300px">
+    <div class="ico">管</div>
+    <div><div class="t">系统管理员</div><div class="d">部署运维 · 配置与数据管理</div></div>
+  </div>
+  <div class="role gray" style="left:1080px;top:300px">
+    <div class="ico">审</div>
+    <div><div class="t">内容审核员</div><div class="d">数据合规 · 结论复核（可选角色）</div></div>
+  </div>
+
+  <!-- 分析用户功能 -->
+  <div class="fn" style="left:80px;top:432px"><span class="k">1</span>新建分析任务（输入话题、选择引擎）</div>
+  <div class="fn" style="left:80px;top:508px"><span class="k">2</span>启动 / 停止分析引擎</div>
+  <div class="fn" style="left:80px;top:584px"><span class="k">3</span>查看实时分析日志与进度</div>
+  <div class="fn" style="left:80px;top:660px"><span class="k">4</span>阅读、下载与打印分析报告</div>
+  <div class="fn" style="left:80px;top:736px"><span class="k">5</span>检索与管理历史报告</div>
+  <div class="fn" style="left:80px;top:812px"><span class="k">6</span>发起热点话题采集任务</div>
+
+  <!-- 管理员功能 -->
+  <div class="fn" style="left:580px;top:432px"><span class="k">1</span>配置各 Agent 模型与检索服务</div>
+  <div class="fn" style="left:580px;top:508px"><span class="k">2</span>调整分析深度（反思轮数、段落数）</div>
+  <div class="fn" style="left:580px;top:584px"><span class="k">3</span>监控服务运行状态与资源占用</div>
+  <div class="fn" style="left:580px;top:660px"><span class="k">4</span>数据库初始化与数据维护</div>
+  <div class="fn" style="left:580px;top:736px"><span class="k">5</span>调度深度采集任务与平台登录</div>
+  <div class="fn" style="left:580px;top:812px"><span class="k">6</span>查看系统日志与异常排查</div>
+
+  <!-- 审核员功能 -->
+  <div class="fn" style="left:1080px;top:432px"><span class="k">1</span>审核采集数据的来源与合规性</div>
+  <div class="fn" style="left:1080px;top:508px"><span class="k">2</span>标记敏感 / 无效内容</div>
+  <div class="fn" style="left:1080px;top:584px"><span class="k">3</span>复核报告结论与引用来源</div>
+  <div class="fn" style="left:1080px;top:660px"><span class="k">4</span>导出审计记录</div>
+  <div class="fn" style="left:1080px;top:736px;border-style:dashed;color:var(--ink-3)">
+    <span class="k">·</span>（后续扩展：多级审批流）<span class="x">规划中</span></div>
+
+  <!-- 连接线 -->
+  <svg width="1600" height="1000" style="position:absolute;left:0;top:0;pointer-events:none">
+    <defs><marker id="d3" markerWidth="8" markerHeight="8" refX="6" refY="2.6" orient="auto">
+      <path d="M0,0 L6,2.6 L0,5.2 Z" fill="#CBD5E1"/></marker></defs>
+    <line x1="800" y1="238" x2="800" y2="268" stroke="#CBD5E1" stroke-width="1.6"/>
+    <line x1="300" y1="268" x2="1300" y2="268" stroke="#CBD5E1" stroke-width="1.6"/>
+    <line x1="300" y1="268" x2="300" y2="296" stroke="#CBD5E1" stroke-width="1.6" marker-end="url(#d3)"/>
+    <line x1="800" y1="268" x2="800" y2="296" stroke="#CBD5E1" stroke-width="1.6" marker-end="url(#d3)"/>
+    <line x1="1300" y1="268" x2="1300" y2="296" stroke="#CBD5E1" stroke-width="1.6" marker-end="url(#d3)"/>
+    <g stroke="#E2E8F0" stroke-width="1.4">
+      <line x1="100" y1="396" x2="100" y2="842"/><line x1="100" y1="462" x2="80" y2="462"/>
+      <line x1="600" y1="396" x2="600" y2="842"/><line x1="600" y1="462" x2="580" y2="462"/>
+      <line x1="1100" y1="396" x2="1100" y2="766"/><line x1="1100" y1="462" x2="1080" y2="462"/>
+    </g>
+  </svg>
+
+  <div class="canvas-foot">微舆 BettaFish · 角色与功能权限图</div>
+</div>
+</body>
+</html>

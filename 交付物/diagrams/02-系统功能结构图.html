@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>系统功能结构图</title>
+<link rel="stylesheet" href="../prototype/assets/style.css">
+<style>
+  .M { position: absolute; width: 212px; height: 88px; border-radius: 12px; border: 1.5px solid #BFDBFE;
+       background: var(--accent-soft); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .M .t { font-size: 15px; font-weight: 700; color: #1D4ED8; }
+  .M .d { font-size: 11px; color: #3B82F6; margin-top: 4px; }
+  .L { position: absolute; width: 176px; height: 60px; border-radius: 10px; border: 1px dashed #CBD5E1;
+       background: #fff; display: flex; align-items: center; justify-content: center; text-align: center;
+       font-size: 13px; font-weight: 600; color: var(--ink-2); padding: 0 8px; line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="canvas-title">
+    <h1>系统功能结构图</h1>
+    <p>按功能模块划分的层次结构：1 个调度中枢 + 5 大业务模块 + 1 个配置模块</p>
+  </div>
+
+  <!-- 根节点 -->
+  <div class="node root" style="left:640px;top:168px;width:320px;height:92px">
+    <div class="t">微舆 BettaFish</div>
+    <div class="d">多智能体舆情分析系统</div>
+  </div>
+
+  <!-- 一级模块 -->
+  <div class="M" style="left:64px;top:320px"><div class="t">工作台调度</div><div class="d">Console</div></div>
+  <div class="M" style="left:316px;top:320px"><div class="t">多智能体分析</div><div class="d">Analysis</div></div>
+  <div class="M" style="left:568px;top:320px"><div class="t">论坛协同</div><div class="d">Forum</div></div>
+  <div class="M" style="left:820px;top:320px"><div class="t">数据采集</div><div class="d">Collection</div></div>
+  <div class="M" style="left:1072px;top:320px"><div class="t">报告生成</div><div class="d">Report</div></div>
+  <div class="M" style="left:1324px;top:320px"><div class="t">系统配置</div><div class="d">Settings</div></div>
+
+  <!-- 叶子节点 · 模块1 -->
+  <div class="L" style="left:94px;top:480px">引擎启停控制</div>
+  <div class="L" style="left:94px;top:556px">实时日志推送</div>
+  <div class="L" style="left:94px;top:632px">任务进度展示</div>
+  <!-- 模块2 -->
+  <div class="L" style="left:346px;top:480px">InsightAgent 库内检索</div>
+  <div class="L" style="left:346px;top:556px">MediaAgent 联网分析</div>
+  <div class="L" style="left:346px;top:632px">QueryAgent 深度检索</div>
+  <!-- 模块3 -->
+  <div class="L" style="left:598px;top:480px">多引擎日志监听</div>
+  <div class="L" style="left:598px;top:556px">HOST 点评生成</div>
+  <div class="L" style="left:598px;top:632px">观点回灌引擎</div>
+  <!-- 模块4 -->
+  <div class="L" style="left:850px;top:480px">热点话题提取</div>
+  <div class="L" style="left:850px;top:556px">平台深度采集</div>
+  <div class="L" style="left:850px;top:632px">关键词管理</div>
+  <!-- 模块5 -->
+  <div class="L" style="left:1102px;top:480px">模板选择与布局</div>
+  <div class="L" style="left:1102px;top:556px">章节内容撰写</div>
+  <div class="L" style="left:1102px;top:632px">图表校验与渲染</div>
+  <!-- 模块6 -->
+  <div class="L" style="left:1354px;top:480px">模型与检索配置</div>
+  <div class="L" style="left:1354px;top:556px">分析深度参数</div>
+  <div class="L" style="left:1354px;top:632px">数据源管理</div>
+
+  <!-- 底部说明 -->
+  <div style="position:absolute;left:64px;top:760px;width:1472px;border-top:1px solid var(--line);padding-top:22px;
+              display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div><div class="eyebrow">分析引擎</div><div style="font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-top:8px">
+      InsightEngine 查本地库<br>MediaEngine 联网多模态分析<br>QueryEngine 新闻深度检索</div></div>
+    <div><div class="eyebrow">报告引擎</div><div style="font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-top:8px">
+      模板选择 → 文档布局<br>篇幅规划 → 逐章撰写<br>图表校验 → HTML 渲染</div></div>
+    <div><div class="eyebrow">数据层</div><div style="font-size:12.5px;color:var(--ink-2);line-height:1.8;margin-top:8px">
+      PostgreSQL 业务库<br>博查 / Anspire / Tavily 检索<br>本地情感分析模型</div></div>
+  </div>
+
+  <!-- 连接线 -->
+  <svg width="1600" height="1000" style="position:absolute;left:0;top:0;pointer-events:none">
+    <defs><marker id="d2" markerWidth="8" markerHeight="8" refX="6" refY="2.6" orient="auto">
+      <path d="M0,0 L6,2.6 L0,5.2 Z" fill="#BFDBFE"/></marker></defs>
+    <!-- 根 → 总线 -->
+    <line x1="800" y1="262" x2="800" y2="296" stroke="#BFDBFE" stroke-width="1.6"/>
+    <line x1="170" y1="296" x2="1430" y2="296" stroke="#BFDBFE" stroke-width="1.6"/>
+    <!-- 总线 → 各模块 -->
+    <line x1="170" y1="296" x2="170" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+    <line x1="422" y1="296" x2="422" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+    <line x1="674" y1="296" x2="674" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+    <line x1="926" y1="296" x2="926" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+    <line x1="1178" y1="296" x2="1178" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+    <line x1="1430" y1="296" x2="1430" y2="316" stroke="#BFDBFE" stroke-width="1.6" marker-end="url(#d2)"/>
+
+    <!-- 模块 → 叶子（每组一根竖脊 + 三个横向短接） -->
+    <g stroke="#CBD5E1" stroke-width="1.4">
+      <line x1="80" y1="408" x2="80" y2="662"/><line x1="80" y1="510" x2="92" y2="510"/>
+      <line x1="80" y1="586" x2="92" y2="586"/><line x1="80" y1="662" x2="92" y2="662"/>
+      <line x1="332" y1="408" x2="332" y2="662"/><line x1="332" y1="510" x2="344" y2="510"/>
+      <line x1="332" y1="586" x2="344" y2="586"/><line x1="332" y1="662" x2="344" y2="662"/>
+      <line x1="584" y1="408" x2="584" y2="662"/><line x1="584" y1="510" x2="596" y2="510"/>
+      <line x1="584" y1="586" x2="596" y2="586"/><line x1="584" y1="662" x2="596" y2="662"/>
+      <line x1="836" y1="408" x2="836" y2="662"/><line x1="836" y1="510" x2="848" y2="510"/>
+      <line x1="836" y1="586" x2="848" y2="586"/><line x1="836" y1="662" x2="848" y2="662"/>
+      <line x1="1088" y1="408" x2="1088" y2="662"/><line x1="1088" y1="510" x2="1100" y2="510"/>
+      <line x1="1088" y1="586" x2="1100" y2="586"/><line x1="1088" y1="662" x2="1100" y2="662"/>
+      <line x1="1340" y1="408" x2="1340" y2="662"/><line x1="1340" y1="510" x2="1352" y2="510"/>
+      <line x1="1340" y1="586" x2="1352" y2="586"/><line x1="1340" y1="662" x2="1352" y2="662"/>
+    </g>
+  </svg>
+
+  <div class="canvas-foot">微舆 BettaFish · 系统功能结构图</div>
+</div>
+</body>
+</html>
